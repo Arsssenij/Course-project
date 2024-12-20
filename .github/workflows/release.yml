@@ -22,7 +22,9 @@ jobs:
     # Создание пакета
     - name: Package Application
       run: |
-        cpack -G ZIP -B `pwd`/packages
+        mkdir -p packages
+        cpack -G ZIP -B `pwd`/packages --config ./CPackConfig.cmake
+        echo "Generated files in ./packages:"
         ls -lh ./packages
 
     # Запуск тестов
@@ -52,6 +54,7 @@ jobs:
         asset_path: ./packages/Course-project-${{ github.run_number }}-Darwin.zip
         asset_name: Course-project-${{ github.run_number }}-Darwin.zip
         asset_content_type: application/zip
+
 
   
   build_ubuntu:
