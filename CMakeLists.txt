@@ -41,7 +41,14 @@ include(CPack)
 
 # Установка файлов
 install(TARGETS tests DESTINATION bin)
-install(FILES Course-project DESTINATION lib)
+# Установка исполняемых файлов
+install(TARGETS tests DESTINATION bin)
+
+# Установка дополнительных файлов (если есть)
+# Убедитесь, что указываете существующий файл или директорию
+# Например, если у вас есть файл README.md:
+install(FILES README.md DESTINATION share/doc)
+
 
 # Регистрация тестов
 include(CTest)
