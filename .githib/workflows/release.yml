@@ -1,0 +1,40 @@
+name: C++ CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Проверка кода из репозитория
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Установка CMake
+    - name: Install CMake
+      uses: jwlawson/actions-setup-cmake@v1
+
+    # Установка компилятора (GCC или Clang)
+    - name: Set up C++ compiler
+      uses: actions/setup-cpp@v2
+      with:
+        compiler: gcc # или "clang"
+
+    # Установка Catch2 с помощью CMake FetchContent
+    - name: Configure CMake project
+      run: |
+        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+        cmake --build build
+
+    # Запуск тестов
+    - name: Run tests
+      run: |
+        cd build
+        ctest --output-on-failure
