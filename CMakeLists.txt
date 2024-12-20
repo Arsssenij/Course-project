@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Course-project)
+project(Course-project VERSION 1.0.0)
 
 set(SOURCE_FILES D:/univer/Course-project/src/*.cpp)
 set(CMAKE_OBJECT_PATH_MAX 250)
