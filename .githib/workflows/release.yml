@@ -10,27 +10,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Проверка кода из репозитория
+    # Checkout the code
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Установка CMake
+    # Install CMake
     - name: Install CMake
-      uses: jwlawson/actions-setup-cmake@v1
+      uses: actions/awslabs/setup-cmake@v1
+      with:
+        cmake-version: latest # Specify the desired version of CMake
 
-    # Установка компилятора (GCC или Clang)
+    # Set up C++ compiler
     - name: Set up C++ compiler
       uses: actions/setup-cpp@v2
       with:
-        compiler: gcc # или "clang"
+        compiler: gcc # or "clang"
 
-    # Установка Catch2 с помощью CMake FetchContent
+    # Configure and build the CMake project
     - name: Configure CMake project
       run: |
-        cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-        cmake --build build
+        mkdir -p build
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release
+        cmake --build .
 
-    # Запуск тестов
+    # Run tests
     - name: Run tests
       run: |
         cd build
