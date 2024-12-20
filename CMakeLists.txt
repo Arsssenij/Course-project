@@ -30,14 +30,15 @@ else()
     # Флаг для g++ и clang++ (Linux, MacOS)    
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif()
+include(CPack)
 
 set(CPACK_GENERATOR "ZIP")
 set(CPACK_PACKAGE_VERSION "${PROJECT_VERSION}")
-set(CPACK_PACKAGE_NAME "Course-project")
+set(CPACK_PACKAGE_NAME "Course-project-${PROJECT_VERSION}-${CMAKE_SYSTEM_NAME}")
 set(CPACK_PACKAGE_DESCRIPTION "Описание вашего проекта")
 set(CPACK_PACKAGE_VENDOR "Ваше имя или компания")
 set(CPACK_PACKAGE_CONTACT "Ваш контактный email")
-include(CPack)
+
 
 # Установка файлов
 install(TARGETS tests DESTINATION bin)
