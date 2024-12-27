@@ -1,21 +1,6 @@
 #define CATCH_CONFIG_MAIN
 #include <catch2/catch_test_macros.hpp>
-#include <string>
-#include <algorithm>
-#include <cctype>
 #include "palindrome.h"
-
-bool isPalindrome(const std::string& str) {
-    std::string filtered;
-    for (char ch : str) {
-        if (std::isalnum(static_cast<unsigned char>(ch))) {
-            filtered += std::tolower(static_cast<unsigned char>(ch));
-        }
-    }
-    std::string reversed = filtered;
-    std::reverse(reversed.begin(), reversed.end());
-    return filtered == reversed;
-}
 
 // Тесты
 TEST_CASE("Проверка палиндромов", "[isPalindrome]") {

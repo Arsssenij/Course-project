@@ -5,10 +5,9 @@ set(CMAKE_OBJECT_PATH_MAX 250)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Указываем исходные файлы для main и тестов
-set(MAIN_SOURCES src/main.cpp ${PALINDROME_SOURCES})
-set(TEST_SOURCES src/tests.cpp)
-set(PALINDROME_SOURCES src/test.cpp)
+# Указываем исходные файлы для main, палиндрома и тестов
+set(MAIN_SOURCES src/main.cpp src/palindrome.cpp)  # Добавили palindrome.cpp для основной программы
+set(TEST_SOURCES src/tests.cpp src/palindrome.cpp)  # Добавили palindrome.cpp для тестов
 
 # Добавление исходников Catch2 через FetchContent
 include(FetchContent)

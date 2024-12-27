@@ -1,9 +1,6 @@
 #include <iostream>
 #include <string>
-#include <algorithm>
-#include <cctype>
 #include "palindrome.h"
-
 
 int main() {
     std::string input;
