@@ -1,11 +1,14 @@
-cmake_minimum_required(VERSION 3.14) 
+cmake_minimum_required(VERSION 3.14)
 
-project(Course-project) 
-set(SOURCE_FILES D:/univer/Course-project/src/*.cpp)
+project(Course-project)
 set(CMAKE_OBJECT_PATH_MAX 250)
-
-set(CMAKE_CXX_STANDARD 17) 
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Указываем исходные файлы для main и тестов
+set(MAIN_SOURCES src/main.cpp)
+set(TEST_SOURCES src/tests.cpp)
+set(PALINDROME_SOURCES src/test.cpp)
 
 # Добавление исходников Catch2 через FetchContent
 include(FetchContent)
@@ -18,11 +21,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(Catch2)
 
-# Добавление исполняемого файла и подключение Catch2
-add_executable(tests main.cpp)
+# Добавление исполняемых файлов
+add_executable(main ${MAIN_SOURCES})
+add_executable(tests ${TEST_SOURCES})
 target_link_libraries(tests PRIVATE Catch2::Catch2WithMain)
-target_include_directories(tests PRIVATE ${CMAKE_BINARY_DIR}/_deps/catch2-src/src)
-
-# Регистрация тестов
-include(CTest)
-include(Catch)

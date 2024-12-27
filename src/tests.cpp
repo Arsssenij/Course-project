@@ -3,8 +3,8 @@
 #include <string>
 #include <algorithm>
 #include <cctype>
+#include "palindrome.h"
 
-// Функция для проверки, является ли строка палиндромом
 bool isPalindrome(const std::string& str) {
     std::string filtered;
     for (char ch : str) {
