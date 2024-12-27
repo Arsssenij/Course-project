@@ -6,9 +6,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Указываем исходные файлы для main и тестов
-set(MAIN_SOURCES src/main.cpp)
+set(MAIN_SOURCES src/main.cpp src/test.cpp)  # Добавляем test.cpp для main
 set(TEST_SOURCES src/tests.cpp)
-set(PALINDROME_SOURCES src/test.cpp)
 
 # Добавление исходников Catch2 через FetchContent
 include(FetchContent)
